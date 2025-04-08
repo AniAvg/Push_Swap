@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRCS = ./sources/validation.c
+SRCS = ./sources/validation.c ./sources/validation_utils.c 
 
 OBJS = $(SRCS:.c=.o)
 
