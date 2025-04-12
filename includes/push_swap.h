@@ -18,6 +18,12 @@
 # include <stdlib.h> // malloc(), free(), exit()
 # include <limits.h>
 
+typedef struct s_stack
+{
+	int				num;
+	struct s_stack	*next;
+}	t_stack;
+
 void	ft_error(void);
 int		ft_myatoi(const char *str);
 int		args_len(char **argv);
