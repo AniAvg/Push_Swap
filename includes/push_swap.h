@@ -26,9 +26,14 @@ typedef struct s_stack
 
 void	ft_error(void);
 int		ft_myatoi(const char *str);
-int		args_len(char **argv);
 char	*join_args(char **argv);
 void	is_duplicate(long *num_array);
 int		*validate_args(char **argv);
+
+void	ft_lstadd(t_stack **lst, t_stack *new);
+t_stack	*ft_lstnew(int content);
+
+void	fill_stack(t_stack *a, char **argv);
+int		is_sorted(t_stack *a);
 
 #endif

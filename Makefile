@@ -1,11 +1,12 @@
 NAME = push_swap
 
-SRCS = ./sources/validation.c ./sources/validation_utils.c 
+SRCS = ./sources/validation.c ./sources/lst_functions.c ./sources/utils.c \
+		./sources/push_swap.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 
