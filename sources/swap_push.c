@@ -30,18 +30,8 @@ void	ft_swap(t_stack **stack, char c)
 
 void	ft_swap_ab(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
-
-	if (!(*a) || !(*b) || !(*a)->next || !(*b)->next)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = (*a)->next;
-	(*a)->next = tmp;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = (*b)->next;
-	(*b)->next = tmp;
+	ft_swap(a, SILENT);
+	ft_swap(b, SILENT);
 	ft_printf("ss\n");
 }
 
@@ -55,7 +45,7 @@ void	ft_push(t_stack **a, t_stack **b, char c)
 			return ;
 		tmp = (*b);
 		*b = (*b)->next;
-		tmp->next = (*a); 
+		tmp->next = (*a);
 		*a = tmp;
 		ft_printf("pa\n");
 	}

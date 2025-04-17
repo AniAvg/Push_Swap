@@ -25,7 +25,6 @@ void	ft_lstadd(t_stack **lst, t_stack *new)
 	else
 		tmp = tmp -> next;
 	tmp -> next = new;
-
 }
 
 t_stack	*ft_lstnew(int content)
@@ -38,6 +37,24 @@ t_stack	*ft_lstnew(int content)
 	new_node->num = content;
 	new_node->next = NULL;
 	return (new_node);
+}
+
+t_stack	*ft_lstlast(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
+}
+
+t_stack	*ft_lstbeforelast(t_stack *stack)
+{
+	if (!stack || !stack->next)
+		return (NULL);
+	while (stack->next && stack->next->next)
+		stack = stack->next;
+	return (stack);
 }
 
 void	ft_lstclear(t_stack **lst, void (*del)(void *))

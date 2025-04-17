@@ -13,6 +13,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# define SILENT 'x'
+
 # include "libft.h"
 # include <unistd.h> // read(), write()
 # include <stdlib.h> // malloc(), free(), exit()
@@ -24,7 +26,6 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	ft_error(void);
 int		ft_myatoi(const char *str);
 char	*join_args(char **argv);
 void	is_duplicate(long *num_array);
@@ -32,8 +33,20 @@ int		*validate_args(char **argv);
 
 void	ft_lstadd(t_stack **lst, t_stack *new);
 t_stack	*ft_lstnew(int content);
+t_stack	*ft_lstlast(t_stack *stack);
+t_stack	*ft_lstbeforelast(t_stack *stack);
 
+void	ft_error(void);
 void	fill_stack(t_stack *a, char **argv);
 int		is_sorted(t_stack *a);
+
+void	ft_swap(t_stack **stack, char c);
+void	ft_swap_ab(t_stack **a, t_stack **b);
+void	ft_push(t_stack **a, t_stack **b, char c);
+
+void	ft_rotate(t_stack **stack, char c);
+void	ft_rotate_ab(t_stack **a, t_stack **b);
+void	ft_rev_rotate(t_stack **stack, char c);
+void	ft_rrr(t_stack **a, t_stack **b);
 
 #endif

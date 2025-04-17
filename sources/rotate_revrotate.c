@@ -32,34 +32,34 @@ void	ft_rotate(t_stack **stack, char c)
 
 void	ft_rotate_ab(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
-	t_stack	*last;
-
-	if (!(*a) || !(*b) || !(*a)->next || !(*b)->next)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	tmp->next = NULL;
-	last = ft_lstlast(*a);
-	last->next = tmp;
-	tmp = *b;
-	*b = (*b)->next;
-	tmp->next = NULL;
-	last = ft_lstlast(*b);
-	last->next = tmp;
+	ft_rotate(a, SILENT);
+	ft_rotate(b, SILENT);
 	ft_printf("rr\n");
 }
 
 void	ft_rev_rotate(t_stack **stack, char c)
 {
-	t_stack	*tmp;
+	t_stack	*prev_last;
+	t_stack	*last;
 
-	while ((*stack)->next && (*stack)->next->next)
-		stack = stack->next;
-	// uf el haves chka
-		
+	while (!(*stack) || !(*stack)->next)
+		return ;
+	prev_last = *stack;
+	while (prev_last->next && prev_last->next->next)
+		prev_last = prev_last->next;
+	last = prev_last->next;
+	prev_last->next = NULL;
+	last->next = *stack;
+	*stack = last;
 	if (c == 'a')
 		ft_printf("rra\n");
 	if (c == 'b')
 		ft_printf("rrb\n");
+}
+
+void	ft_rrr(t_stack **a, t_stack **b)
+{
+	ft_rra(a, SILENT);
+	ft_rrb(b, SILENT);
+	ft_printf("rrr\n");
 }

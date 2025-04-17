@@ -23,6 +23,5 @@ int	main(int argc, char **argv)
 	fill_stack(&a, argv);
 	if (is_sorted(&a) == 0)
 		return (0);
-	
 	return (0);
 }
