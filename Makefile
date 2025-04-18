@@ -1,7 +1,8 @@
 NAME = push_swap
 
-SRCS = ./sources/validation.c ./sources/lst_functions.c ./sources/utils.c \
-		./sources/push_swap.c ./sources/push_swap_ops.c ./sources/rotate_revrotate_ops.c
+SRCS = ./sources/validation.c ./sources/lst_ops.c ./sources/rotate_revrotate_ops.c \
+		./sources/push_swap_ops.c ./sources/push_swap.c ./sources/utils.c \
+		
 
 OBJS = $(SRCS:.c=.o)
 

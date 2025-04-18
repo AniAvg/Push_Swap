@@ -18,38 +18,114 @@ void	ft_error(void)
 	exit(1);
 }
 
-void	fill_stack(t_stack *a, char **argv)
+int	arr_len(int *arr)
+{
+	int	size;
+
+	if (!arr)
+		return (NULL);
+	size = 0;
+	while (arr[size])
+		size++;
+	return (size);
+}
+
+int	*dup_array(int *arr, int size)
 {
 	int	i;
-	int	*num_array;
+	int	*duplicate;
 
 	i = 0;
-	num_array = validate_args(argv);
-	if (!num_array)
+	if (!arr || size < 0)
+		return (NULL);
+	duplicate = (int *)malloc(sizeof(int) * size);
+	if (!duplicate)
+		return(NULL);
+	i = 0;
+	while (i < size)
 	{
-		free(num_array);
+		duplicate[i] = arr[i];
+		i++;
+	}
+	return (duplicate);
+}
+int	is_sorted(int *arr, int size)
+{
+	int	i;
+
+	if (!arr || size < 0)
+		return (0);
+	if (size == 1)
+		return (1);
+	i = 0;
+	while (i < size -1)
+	{
+		if (arr[i] > arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	*sort_array(int *arr, int n)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	j = 0;
+	if (!arr)
+		return (NULL);
+	while (i < n)
+	{
+		j = 0;
+		while (j < n)
+		{
+			if (arr[i] < arr[j])
+			{
+				tmp = arr[j];
+				arr[j] = arr[i];
+				arr[i] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (arr);
+}
+
+void	fill_stack(t_stack *a, t_stack *b, char **argv)
+{
+	int	i;
+	int	j;
+	int	*unsorted;
+	int	*sorted;
+
+	unsorted = validate_args(argv);
+	if (!unsorted)
+	{
+		free(unsorted);
 		ft_error();
 	}
-	while (num_array[i])
+	sorted = dup_array(unsorted);
+	if (!is_sorted(sorted, arr_len(sorted)))
+		sort_array(sorted, arr_len(sorted));
+	i = 0;
+	j = 0;
+	while (i < arr_len(sorted))
 	{
-		ft_lstadd(a, ft_lstnew(num_array[i]));
+		j = 0;
+		while (j < arr_len(sorted))
+		{
+			if (unsorted[i] == sorted[j])
+			{
+				ft_lstadd(a, ft_lstnew(j));
+				break;
+			}
+			j++;
+		}	
 		i++;
 	}
 }
 
-int	is_sorted(t_stack *a)
-{
-	int	nb;
-
-	if (!a)
-		return (0);
-	nb = a -> num;
-	while (a)
-	{
-		if (a -> num < nb)
-			return (0);
-		nb = a -> num;
-		a = a -> next;
-	}
-	return (1);
-}
