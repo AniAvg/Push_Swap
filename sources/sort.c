@@ -1,0 +1,65 @@
+#include "push_swap.h"
+
+int	get_max_index(t_stack *a)
+{
+	int	max_index;
+
+	max_index = 0;
+	while (a)
+	{
+		if (a->index > max_index)
+			max_index = a->index;
+		a = a->next;
+	}
+	return (max_index);
+}
+
+int	ft_sqrt(int nb)
+{
+	int	i;
+
+	i = 0;
+	if (nb <= 0)
+		return (0);
+	while (1)
+	{
+		if (i * i >= nb)
+		{
+			if (i * i == nb)
+				return (i);
+			else
+				return (i - 1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+void	chunck_sort(t_stack **a, t_stack **b, int n)
+{
+	int	i;
+	int	j;
+	int	counter;
+	int	max_index;
+
+	i = 0;
+	counter = 0;
+	j = ft_sqrt(ft_lstsize(*a)) * 3 / 2;
+	max_index = get_max_index(a);
+	while (*a)
+	{
+		if ((*a)->index <= counter)
+		{
+			ft_push(&a, &b, 'b');
+			ft_rotate(&b, 'b');
+			counter++;
+		}
+		else if ((*a)->index <= counter + j)
+		{
+			ft_push(&a, &b, 'b');
+			counter++;
+		}
+		else
+			ft_rotate(&a, 'a');
+	}
+}

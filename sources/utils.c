@@ -40,7 +40,7 @@ int	*dup_array(int *arr, int size)
 		return (NULL);
 	duplicate = (int *)malloc(sizeof(int) * size);
 	if (!duplicate)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
@@ -95,7 +95,7 @@ int	*sort_array(int *arr, int n)
 	return (arr);
 }
 
-void	fill_stack(t_stack *a, t_stack *b, char **argv)
+void	fill_stack(t_stack *a, char **argv)
 {
 	int	i;
 	int	j;
@@ -104,11 +104,13 @@ void	fill_stack(t_stack *a, t_stack *b, char **argv)
 
 	unsorted = validate_args(argv);
 	if (!unsorted)
+		ft_error();
+	sorted = dup_array(unsorted, arr_len(unsorted));
+	if (!sorted)
 	{
 		free(unsorted);
 		ft_error();
 	}
-	sorted = dup_array(unsorted);
 	if (!is_sorted(sorted, arr_len(sorted)))
 		sort_array(sorted, arr_len(sorted));
 	i = 0;
@@ -121,11 +123,12 @@ void	fill_stack(t_stack *a, t_stack *b, char **argv)
 			if (unsorted[i] == sorted[j])
 			{
 				ft_lstadd(a, ft_lstnew(j));
-				break;
+				break ;
 			}
 			j++;
-		}	
+		}
 		i++;
 	}
+	free(sorted);
+	free(unsorted);
 }
-

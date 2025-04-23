@@ -22,23 +22,27 @@
 
 typedef struct s_stack
 {
-	int				num;
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
-//validation.c
+// validation.c
 int		ft_myatoi(const char *str);
 char	*join_args(char **argv);
 void	is_duplicate(long *num_array);
 int		*validate_args(char **argv);
-//lst_ops.c
+// lst_ops.c
 void	ft_lstadd(t_stack **lst, t_stack *new);
 t_stack	*ft_lstnew(int content);
 t_stack	*ft_lstlast(t_stack *stack);
 t_stack	*ft_lstbeforelast(t_stack *stack);
+int		ft_lstsize(t_stack *lst);
 // utils.c
 void	ft_error(void);
+int		arr_len(int *arr);
+int		*dup_array(int *arr, int size);
+int		is_sorted(int *arr, int size);
+int		*sort_array(int *arr, int n);
 void	fill_stack(t_stack *a, char **argv);
-int		is_sorted(t_stack *a);
 // push_swap_ops.c
 void	ft_swap(t_stack **stack, char c);
 void	ft_swap_ab(t_stack **a, t_stack **b);
@@ -48,5 +52,8 @@ void	ft_rotate(t_stack **stack, char c);
 void	ft_rotate_ab(t_stack **a, t_stack **b);
 void	ft_rev_rotate(t_stack **stack, char c);
 void	ft_rrr(t_stack **a, t_stack **b);
+// sort.c
+// final_sort.c
+// push_swap.c
 
 #endif

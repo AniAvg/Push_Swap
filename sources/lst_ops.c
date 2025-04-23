@@ -34,7 +34,7 @@ t_stack	*ft_lstnew(int content)
 	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
-	new_node->num = content;
+	new_node->index = content;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -48,29 +48,6 @@ t_stack	*ft_lstlast(t_stack *stack)
 	return (stack);
 }
 
-t_stack	*ft_lstbeforelast(t_stack *stack)
-{
-	if (!stack || !stack->next)
-		return (NULL);
-	while (stack->next && stack->next->next)
-		stack = stack->next;
-	return (stack);
-}
-
-void	ft_lstclear(t_stack **lst, void (*del)(void *))
-{
-	t_stack	*current;
-
-	while (lst && *lst)
-	{
-		current = (*lst)->next;
-		del((*lst)->num);
-		free(*lst);
-		*lst = current;
-	}
-	lst = NULL;
-}
-
 int	ft_lstsize(t_stack *lst)
 {
 	int	count;
@@ -82,4 +59,18 @@ int	ft_lstsize(t_stack *lst)
 		lst = lst->next;
 	}
 	return (count);
+}
+
+void	ft_lstclear(t_stack **lst, void (*del)(void *))
+{
+	t_stack	*current;
+
+	while (lst && *lst)
+	{
+		current = (*lst)->next;
+		del((*lst)->index);
+		free(*lst);
+		*lst = current;
+	}
+	lst = NULL;
 }

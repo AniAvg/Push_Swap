@@ -56,7 +56,6 @@ void	ft_push(t_stack **a, t_stack **b, char c)
 		tmp = (*a);
 		*a = (*a)->next;
 		tmp->next = (*b);
-		tmp = (*b);
 		*b = tmp;
 		ft_printf("pb\n");
 	}
