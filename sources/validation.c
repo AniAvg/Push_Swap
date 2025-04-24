@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/05 13:51:20 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:39:25 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	*join_args(char **argv)
 	return (args_string);
 }
 
-void	is_duplicate(long *num_array)
+void	is_duplicate(int *num_array)
 {
 	int	i;
 	int	j;
@@ -91,17 +91,17 @@ void	is_duplicate(long *num_array)
 int	*validate_args(char **argv)
 {
 	int		count;
-	long	*num_array;
+	int		*num_array;
 	char	*args_string;
 	char	**split_args;
 
 	count = 0;
 	args_string = join_args(argv);
 	split_args = ft_split(args_string, ' ');
-	ftee(args_string);
+	free(args_string);
 	while (split_args[count])
 		count++;
-	num_array = (long *)malloc(sizeof(long) * (count + 1));
+	num_array = (int *)malloc(sizeof(int) * (count + 1));
 	if (!num_array)
 		return (NULL);
 	count = 0;

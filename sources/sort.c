@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/24 16:52:27 by anavagya          #+#    #+#             */
+/*   Updated: 2025/04/24 17:47:45 by anavagya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	get_max_index(t_stack *a)
@@ -35,31 +47,29 @@ int	ft_sqrt(int nb)
 	return (0);
 }
 
-void	chunck_sort(t_stack **a, t_stack **b, int n)
+void	chunck_sort(t_stack **a, t_stack **b)
 {
-	int	i;
-	int	j;
+	int	n;
 	int	counter;
-	int	max_index;
+	//int	max_index;
 
-	i = 0;
 	counter = 0;
-	j = ft_sqrt(ft_lstsize(*a)) * 3 / 2;
-	max_index = get_max_index(a);
+	n = ft_sqrt(ft_stacksize(*a)) * 3 / 2;
+	//max_index = get_max_index(a);
 	while (*a)
 	{
 		if ((*a)->index <= counter)
 		{
-			ft_push(&a, &b, 'b');
-			ft_rotate(&b, 'b');
+			ft_push(a, b, 'b');
+			ft_rotate(b, 'b');
 			counter++;
 		}
-		else if ((*a)->index <= counter + j)
+		else if ((*a)->index <= counter + n)
 		{
-			ft_push(&a, &b, 'b');
+			ft_push(a, b, 'b');
 			counter++;
 		}
 		else
-			ft_rotate(&a, 'a');
+			ft_rotate(a, 'a');
 	}
 }

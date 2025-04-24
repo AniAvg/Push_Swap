@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:22 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/14 12:32:25 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:23:57 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	arr_len(int *arr)
 	int	size;
 
 	if (!arr)
-		return (NULL);
+		return (0);
 	size = 0;
 	while (arr[size])
 		size++;
@@ -49,6 +49,7 @@ int	*dup_array(int *arr, int size)
 	}
 	return (duplicate);
 }
+
 int	is_sorted(int *arr, int size)
 {
 	int	i;
@@ -95,7 +96,7 @@ int	*sort_array(int *arr, int n)
 	return (arr);
 }
 
-void	fill_stack(t_stack *a, char **argv)
+void	fill_stack(t_stack **a, char **argv)
 {
 	int	i;
 	int	j;
@@ -114,7 +115,6 @@ void	fill_stack(t_stack *a, char **argv)
 	if (!is_sorted(sorted, arr_len(sorted)))
 		sort_array(sorted, arr_len(sorted));
 	i = 0;
-	j = 0;
 	while (i < arr_len(sorted))
 	{
 		j = 0;
@@ -122,7 +122,7 @@ void	fill_stack(t_stack *a, char **argv)
 		{
 			if (unsorted[i] == sorted[j])
 			{
-				ft_lstadd(a, ft_lstnew(j));
+				ft_stackadd(a, ft_stacknew(j));
 				break ;
 			}
 			j++;

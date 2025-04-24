@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_ops.c                                          :+:      :+:    :+:   */
+/*   stack_ops.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 11:10:26 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/18 11:10:29 by anavagya         ###   ########.fr       */
+/*   Created: 2025/04/24 16:29:51 by anavagya          #+#    #+#             */
+/*   Updated: 2025/04/24 16:56:54 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd(t_stack **lst, t_stack *new)
+void	ft_stackadd(t_stack **stack, t_stack *new)
 {
 	t_stack	*tmp;
 
-	tmp = *lst;
+	tmp = *stack;
 	if (!tmp)
 	{
-		*lst = new;
+		*stack = new;
 		return ;
 	}
 	else
@@ -27,7 +27,7 @@ void	ft_lstadd(t_stack **lst, t_stack *new)
 	tmp -> next = new;
 }
 
-t_stack	*ft_lstnew(int content)
+t_stack	*ft_stacknew(int content)
 {
 	t_stack	*new_node;
 
@@ -39,7 +39,7 @@ t_stack	*ft_lstnew(int content)
 	return (new_node);
 }
 
-t_stack	*ft_lstlast(t_stack *stack)
+t_stack	*ft_stacklast(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -48,29 +48,27 @@ t_stack	*ft_lstlast(t_stack *stack)
 	return (stack);
 }
 
-int	ft_lstsize(t_stack *lst)
+int	ft_stacksize(t_stack *stack)
 {
 	int	count;
 
 	count = 0;
-	while (lst != NULL)
+	while (stack != NULL)
 	{
 		count++;
-		lst = lst->next;
+		stack = stack->next;
 	}
 	return (count);
 }
 
-void	ft_lstclear(t_stack **lst, void (*del)(void *))
+void	ft_stackclear(t_stack **stack)
 {
-	t_stack	*current;
+	t_stack	*tmp;
 
-	while (lst && *lst)
+	while (stack && *stack)
 	{
-		current = (*lst)->next;
-		del((*lst)->index);
-		free(*lst);
-		*lst = current;
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
 	}
-	lst = NULL;
 }

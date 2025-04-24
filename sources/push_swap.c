@@ -3,25 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:51 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/14 12:32:52 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:04:38 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	is_sorted_stack(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->index > stack->next->index)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		*num_array;
 
+	a = NULL;
+	b = NULL;
 	if (argc < 2)
 		return (0);
 	fill_stack(&a, argv);
-	if (is_sorted(&a) == 0)
-		return (0);
+	if (!is_sorted_stack(a))
+		butterfly_sort(&a, &b);
+	ft_stackclear(&a);
+	ft_stackclear(&b);
 	return (0);
 }

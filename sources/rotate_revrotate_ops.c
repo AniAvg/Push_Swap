@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_revrotate_ops.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:47:19 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/17 18:47:21 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:02:29 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_rotate(t_stack **stack, char c)
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = NULL;
-	last = ft_lstlast(*stack);
+	last = ft_stacklast(*stack);
 	last->next = tmp;
 	if (c == 'a')
 		ft_printf("ra\n");
@@ -59,7 +59,7 @@ void	ft_rev_rotate(t_stack **stack, char c)
 
 void	ft_rrr(t_stack **a, t_stack **b)
 {
-	ft_rra(a, SILENT);
-	ft_rrb(b, SILENT);
+	ft_rev_rotate(a, SILENT);
+	ft_rev_rotate(b, SILENT);
 	ft_printf("rrr\n");
 }
