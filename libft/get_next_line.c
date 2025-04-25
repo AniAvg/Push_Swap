@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 18:49:54 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/04 13:58:46 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:06:33 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ char	*ft_read_file(int fd, char *buff)
 		byte_read = read(fd, temp, BUFFER_SIZE);
 		if (byte_read == -1)
 		{
-			free_str(buff, temp);
+			ft_free_str(buff, temp);
 			return (NULL);
 		}
 		temp[byte_read] = '\0';
 		buff = ft_strjoin(buff, temp);
 	}
-	free_str(temp, NULL);
+	ft_free_str(temp, NULL);
 	return (buff);
 }
 
@@ -100,8 +100,8 @@ char	*get_next_line(int fd)
 		buff = NULL;
 		return (NULL);
 	}
-	buff = read_file(fd, buff);
-	line = get_the_line(buff);
-	buff = new_line(buff);
+	buff = ft_read_file(fd, buff);
+	line = ft_get_the_line(buff);
+	buff = ft_new_line(buff);
 	return (line);
 }

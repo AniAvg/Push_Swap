@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:22 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/24 17:23:57 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:21:11 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	is_sorted(int *arr, int size)
 {
 	int	i;
 
-	if (!arr || size < 0)
+	if (!arr || size <= 0)
 		return (0);
 	if (size == 1)
 		return (1);
@@ -75,19 +75,18 @@ int	*sort_array(int *arr, int n)
 	int	tmp;
 
 	i = 0;
-	j = 0;
-	if (!arr)
+	if (!arr || n <= 0)
 		return (NULL);
 	while (i < n)
 	{
 		j = 0;
-		while (j < n)
+		while (j < n - 1)
 		{
-			if (arr[i] < arr[j])
+			if (arr[j] < arr[j + 1])
 			{
 				tmp = arr[j];
-				arr[j] = arr[i];
-				arr[i] = tmp;
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
 			}
 			j++;
 		}
@@ -99,36 +98,45 @@ int	*sort_array(int *arr, int n)
 void	fill_stack(t_stack **a, char **argv)
 {
 	int	i;
-	int	j;
+	int	arr_size;
 	int	*unsorted;
 	int	*sorted;
 
 	unsorted = validate_args(argv);
 	if (!unsorted)
 		ft_error();
+	arr_size = arr_len(unsorted) - 1;
+	if (arr_size == 0)
+	{
+		free(unsorted);
+		ft_error();
+	}
 	sorted = dup_array(unsorted, arr_len(unsorted));
 	if (!sorted)
 	{
 		free(unsorted);
 		ft_error();
 	}
-	if (!is_sorted(sorted, arr_len(sorted)))
-		sort_array(sorted, arr_len(sorted));
+	if (!is_sorted(sorted, arr_size))
+		sort_array(sorted, arr_size);
 	i = 0;
-	while (i < arr_len(sorted))
+	printf("%d->>>>>>>>>>>>>>>>>>>>>>>\n", arr_size);
+	while (i < arr_size)
 	{
-		j = 0;
-		while (j < arr_len(sorted))
-		{
-			if (unsorted[i] == sorted[j])
-			{
-				ft_stackadd(a, ft_stacknew(j));
-				break ;
-			}
-			j++;
-		}
+		ft_stackadd(a, ft_stacknew(i));
+		printf("\n\n\n\n\n\nAndwwi");
 		i++;
 	}
+
+	// while (i < arr_size)
+	// {
+	// 	if (unsorted[i] == sorted[i])
+	// 	{
+	// 		ft_stackadd(a, ft_stacknew(i));
+	// 		break ;
+	// 	}
+	// 	i++;
+	// }
 	free(sorted);
 	free(unsorted);
 }

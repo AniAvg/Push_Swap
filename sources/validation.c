@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/24 17:39:25 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:02:51 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@ int	ft_myatoi(const char *str)
 	long	result;
 	int		sign;
 
+	if (!str || str[0] == '\0')
+		ft_error();
 	sign = 1;
 	result = 0;
-	if (*str != '-' && *str != '+' && !ft_isdigit(*str))
-		ft_error();
+	// if (*str != '-' && *str != '+' && !ft_isdigit(*str))
+	// 	ft_error();
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
 			sign = -1;
 		str++;
 	}
-	if (*str == '0' && *(str +1))
+	if (!ft_isdigit(*str))
+		ft_error();
+	if (*str == '0' && *(str + 1))
 		str++;
 	while (ft_isdigit(*str))
 	{
@@ -36,6 +40,8 @@ int	ft_myatoi(const char *str)
 			ft_error();
 		str++;
 	}
+	if (*str != '\0') // "123abc"
+		ft_error();
 	return (sign * result);
 }
 
@@ -54,17 +60,36 @@ char	*join_args(char **argv)
 		tmp = ft_strjoin(args_string, argv[i]);
 		free(args_string);
 		args_string = tmp;
-		if (argv[i + 1])
-		{
-			tmp = ft_strjoin(args_string, " ");
-			free(args_string);
-			args_string = tmp;
-		}
+		tmp = ft_strjoin(args_string, " ");
+		free(args_string);
+		args_string = tmp;
 		i++;
 	}
 	return (args_string);
 }
+/*
+void	is_duplicate(int *num_array)
+{
+	int	i;
+	int	j;
+	int	count;
 
+	i = 0;
+	count = 0;
+	while (num_array[count])
+		count++;
+	while (i < count)
+	{
+		j = 1;
+		while (i + j < count)
+		{
+			if (num_array[i] == num_array[i + j])
+				ft_error();
+			j++;
+		}
+		i++;
+	}
+}*/
 void	is_duplicate(int *num_array)
 {
 	int	i;
@@ -73,10 +98,14 @@ void	is_duplicate(int *num_array)
 
 	i = 0;
 	j = 1;
-	count = 0;
-	while (num_array[count])
-		count++;
-	while (num_array[i])
+
+	count = arr_len(num_array);
+	//{
+		
+	//	printf("i ->>>>>>>>>>>>>>>>> %d\n", count);
+	//	count++;
+	//}
+	while (i < count)
 	{
 		while (i + j < count)
 		{
@@ -90,6 +119,7 @@ void	is_duplicate(int *num_array)
 
 int	*validate_args(char **argv)
 {
+	int		i;
 	int		count;
 	int		*num_array;
 	char	*args_string;
@@ -101,17 +131,31 @@ int	*validate_args(char **argv)
 	free(args_string);
 	while (split_args[count])
 		count++;
+	// printf("count %d\n",count);
 	num_array = (int *)malloc(sizeof(int) * (count + 1));
+	// num_array = (int *)malloc(sizeof(int) * count );
 	if (!num_array)
 		return (NULL);
-	count = 0;
-	while (split_args[count])
+	i = 0;
+	while (i < count)
 	{
-		num_array[count] = ft_myatoi(split_args[count]);
-		count++;
+		num_array[i] = ft_myatoi(split_args[i]);
+		free(split_args[i]);
+		i++;
 	}
-	num_array[count] = '\0';
-	free(args_string);
+	num_array[i] = '\0';
+	for (int j = 0; j < count; j++)
+	{
+		ft_printf("%d\n", num_array[j]);
+	}
+	
 	is_duplicate(num_array);
+	//free(args_string);  //es free-n erevi petq a hanel 
+	////////////
+	// for (int k = 0; k < 4; k++)
+	// {
+	// 	ft_printf("%d\n", num_array[k]);
+	// }
+	///////////
 	return (num_array);
 }
