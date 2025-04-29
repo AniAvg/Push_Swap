@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:52:27 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/24 17:47:45 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:20:32 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	get_max_index(t_stack *a)
 {
 	int	max_index;
 
-	max_index = 0;
+	if (!a)
+		return (-1);
+	max_index = a->index;
 	while (a)
 	{
 		if (a->index > max_index)
@@ -52,7 +54,6 @@ void	chunck_sort(t_stack **a, t_stack **b)
 	int	n;
 	int	counter;
 	//int	max_index;
-
 	counter = 0;
 	n = ft_sqrt(ft_stacksize(*a)) * 3 / 2;
 	//max_index = get_max_index(a);
@@ -72,4 +73,5 @@ void	chunck_sort(t_stack **a, t_stack **b)
 		else
 			ft_rotate(a, 'a');
 	}
+	push_back_to_a(a, b);
 }

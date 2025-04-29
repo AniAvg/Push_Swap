@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:52:20 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/25 14:42:45 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:17:25 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	push_back_to_a(t_stack **a, t_stack **b)
 {
 	int	max_index;
 
-	max_index = get_max_index(*b);
 	while (*b)
 	{
+		max_index = get_max_index(*b);
 		move_to_top(b, max_index, 'b');
 		ft_push(a, b, 'a');
 	}
@@ -60,9 +60,26 @@ void	push_back_to_a(t_stack **a, t_stack **b)
 
 void	butterfly_sort(t_stack **a, t_stack **b)
 {
-	//int	size;
+	int	size;
 	
-	//size = ft_stacksize(*a);
-	chunck_sort(a, b); //size)
-	push_back_to_a(a, b);
+	size = ft_stacksize(*a);
+	if (size == 2)
+		ft_swap(a, 'a');
+	else if (size == 3)
+		ft_sort_three(a);
+	// else if (size == 4)
+	// 	ft_sort_four(a);
+	// else if (size = 5)
+	// 	ft_sort_five(a);
+	else
+	{
+		chunck_sort(a, b); //size)
+		while ((*a)->next)
+		{
+			printf("%d\n", (*a)->index);
+			*a = (*a)->next;
+		}
+	}
+	//push_back_to_a(a, b);
+	
 }

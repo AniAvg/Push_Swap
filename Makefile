@@ -2,13 +2,13 @@ NAME = push_swap
 
 SRCS = ./sources/validation.c ./sources/stack_ops.c ./sources/rotate_revrotate_ops.c \
 		./sources/push_swap_ops.c ./sources/push_swap.c ./sources/utils.c \
-		./sources/sort.c ./sources/final_sort.c
+		./sources/sort.c ./sources/final_sort.c ./sources/simple_sort.c
 		
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g#3 -fsanitize=address
 
 LIBFT = ./libft/libft.a
 

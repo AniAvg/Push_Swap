@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:29:51 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/25 18:16:10 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:20:23 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,17 @@ void	ft_stackadd(t_stack **stack, t_stack *new)
 {
 	t_stack	*tmp;
 
-	tmp = *stack;
-	if (!tmp)
+	if (!*stack)
 	{
 		*stack = new;
 		return ;
 	}
-	else
+	tmp = *stack;
+	while (tmp->next)
 	{
-		printf("\n\n\n\n\n\nAndwwi");
-		while (tmp)
-			tmp = tmp->next;
-		tmp->next = new;
-		printf("\n\n\n\n\n\n\nAni\n\n");
+		tmp = tmp->next;
 	}
-
+	tmp->next = new;
 }
 
 t_stack	*ft_stacknew(int content)

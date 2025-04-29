@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 11:16:08 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/24 18:09:55 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:11:33 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_stack
 // validation.c
 int		ft_myatoi(const char *str);
 char	*join_args(char **argv);
-void	is_duplicate(int *num_array);
-int		*validate_args(char **argv);
+void	is_duplicate(int *num_array, int size);
+int		*validate_args(char **argv, int *size);
 // stack_ops.c
 void	ft_stackadd(t_stack **stack, t_stack *new);
 t_stack	*ft_stacknew(int content);
@@ -61,7 +61,8 @@ int		get_position(t_stack *stack, int index);
 void	move_to_top(t_stack **stack, int index, char c);
 void	push_back_to_a(t_stack **a, t_stack **b);
 void	butterfly_sort(t_stack **a, t_stack **b);
+//simple_sort.c
+void	ft_sort_three(t_stack **a);
 // push_swap.c
-int		is_sorted_stack(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:22 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/25 18:21:11 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/29 15:19:39 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	arr_len(int *arr)
 	if (!arr)
 		return (0);
 	size = 0;
-	while (arr[size])
+	while (arr[size] != 0)
 		size++;
 	return (size);
 }
@@ -102,16 +102,15 @@ void	fill_stack(t_stack **a, char **argv)
 	int	*unsorted;
 	int	*sorted;
 
-	unsorted = validate_args(argv);
+	unsorted = validate_args(argv, &arr_size);
 	if (!unsorted)
 		ft_error();
-	arr_size = arr_len(unsorted) - 1;
-	if (arr_size == 0)
+	if (arr_size <= 0)
 	{
 		free(unsorted);
 		ft_error();
 	}
-	sorted = dup_array(unsorted, arr_len(unsorted));
+	sorted = dup_array(unsorted, arr_size);
 	if (!sorted)
 	{
 		free(unsorted);
@@ -119,15 +118,14 @@ void	fill_stack(t_stack **a, char **argv)
 	}
 	if (!is_sorted(sorted, arr_size))
 		sort_array(sorted, arr_size);
+	else
+		return ;
 	i = 0;
-	printf("%d->>>>>>>>>>>>>>>>>>>>>>>\n", arr_size);
 	while (i < arr_size)
 	{
 		ft_stackadd(a, ft_stacknew(i));
-		printf("\n\n\n\n\n\nAndwwi");
 		i++;
 	}
-
 	// while (i < arr_size)
 	// {
 	// 	if (unsorted[i] == sorted[i])

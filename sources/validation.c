@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/25 18:02:51 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/04/29 12:11:04 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ char	*join_args(char **argv)
 		return (NULL);
 	while (argv[i])
 	{
+		if (argv[i][0] == '\0') // if it's an empty string
+			ft_error();
 		tmp = ft_strjoin(args_string, argv[i]);
 		free(args_string);
 		args_string = tmp;
@@ -67,47 +69,17 @@ char	*join_args(char **argv)
 	}
 	return (args_string);
 }
-/*
-void	is_duplicate(int *num_array)
+
+void	is_duplicate(int *num_array, int arr_size)
 {
 	int	i;
 	int	j;
-	int	count;
 
 	i = 0;
-	count = 0;
-	while (num_array[count])
-		count++;
-	while (i < count)
+	while (i < arr_size)
 	{
 		j = 1;
-		while (i + j < count)
-		{
-			if (num_array[i] == num_array[i + j])
-				ft_error();
-			j++;
-		}
-		i++;
-	}
-}*/
-void	is_duplicate(int *num_array)
-{
-	int	i;
-	int	j;
-	int	count;
-
-	i = 0;
-	j = 1;
-
-	count = arr_len(num_array);
-	//{
-		
-	//	printf("i ->>>>>>>>>>>>>>>>> %d\n", count);
-	//	count++;
-	//}
-	while (i < count)
-	{
-		while (i + j < count)
+		while (i + j < arr_size)
 		{
 			if (num_array[i] == num_array[i + j])
 				ft_error();
@@ -117,7 +89,7 @@ void	is_duplicate(int *num_array)
 	}
 }
 
-int	*validate_args(char **argv)
+int	*validate_args(char **argv, int *size)
 {
 	int		i;
 	int		count;
@@ -131,9 +103,7 @@ int	*validate_args(char **argv)
 	free(args_string);
 	while (split_args[count])
 		count++;
-	// printf("count %d\n",count);
 	num_array = (int *)malloc(sizeof(int) * (count + 1));
-	// num_array = (int *)malloc(sizeof(int) * count );
 	if (!num_array)
 		return (NULL);
 	i = 0;
@@ -143,19 +113,13 @@ int	*validate_args(char **argv)
 		free(split_args[i]);
 		i++;
 	}
-	num_array[i] = '\0';
-	for (int j = 0; j < count; j++)
-	{
-		ft_printf("%d\n", num_array[j]);
-	}
-	
-	is_duplicate(num_array);
+	//num_array[i] = '\0'; // karoxa es el hanem
 	//free(args_string);  //es free-n erevi petq a hanel 
-	////////////
-	// for (int k = 0; k < 4; k++)
+	*size = count;
+	is_duplicate(num_array, count);
+	// for (int j = 0; j < count; j++)
 	// {
-	// 	ft_printf("%d\n", num_array[k]);
+	// 	ft_printf("%d\n", num_array[j]);
 	// }
-	///////////
 	return (num_array);
 }
