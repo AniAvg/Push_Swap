@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:22 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/29 16:53:05 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:47:52 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,19 @@ void	ft_error(void)
 	exit(1);
 }
 
-int	arr_len(int *arr)
+int	get_the_index(int *arr, int size, int value)
 {
-	int	size;
+	int	i;
 
-	if (!arr)
-		return (0);
-	size = 0;
-	while (arr[size] != 0)
-		size++;
-	return (size);
+	i = 0;
+	while (i < size)
+	{
+		if (arr[i] == value)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
-
 int	*dup_array(int *arr, int size)
 {
 	int	i;
@@ -82,7 +83,7 @@ int	*sort_array(int *arr, int n)
 		j = 0;
 		while (j < n - 1)
 		{
-			if (arr[j] < arr[j + 1])
+			if (arr[j] > arr[j + 1])
 			{
 				tmp = arr[j];
 				arr[j] = arr[j + 1];
@@ -98,11 +99,13 @@ int	*sort_array(int *arr, int n)
 void	fill_stack(t_stack **a, char **argv)
 {
 	int	i;
+	int j;
 	int	arr_size;
 	int	*unsorted;
 	int	*sorted;
 
 	unsorted = validate_args(argv, &arr_size);
+
 	if (!unsorted)
 		ft_error();
 	if (arr_size <= 0)
@@ -123,18 +126,10 @@ void	fill_stack(t_stack **a, char **argv)
 	i = 0;
 	while (i < arr_size)
 	{
-		ft_stackadd(a, ft_stacknew(i));
+		j = get_the_index(sorted, arr_size, unsorted[i]);
+		ft_stackadd(a, ft_stacknew(j));
 		i++;
 	}
-	// while (i < arr_size)
-	// {
-	// 	if (unsorted[i] == sorted[i])
-	// 	{
-	// 		ft_stackadd(a, ft_stacknew(i));
-	// 		break ;
-	// 	}
-	// 	i++;
-	// }
 	free(sorted);
 	free(unsorted);
 }

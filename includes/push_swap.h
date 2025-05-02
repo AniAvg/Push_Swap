@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 11:16:08 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/29 12:11:33 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:55:00 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		ft_stacksize(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
 // utils.c
 void	ft_error(void);
-int		arr_len(int *arr);
+int		get_the_index(int *arr, int size, int value);
 int		*dup_array(int *arr, int size);
 int		is_sorted(int *arr, int size);
 int		*sort_array(int *arr, int n);
@@ -60,9 +60,11 @@ void	chunck_sort(t_stack **a, t_stack **b);
 int		get_position(t_stack *stack, int index);
 void	move_to_top(t_stack **stack, int index, char c);
 void	push_back_to_a(t_stack **a, t_stack **b);
-void	butterfly_sort(t_stack **a, t_stack **b);
+void	sorting(t_stack **a, t_stack **b);
 //simple_sort.c
 void	ft_sort_three(t_stack **a);
+void	ft_sort_four(t_stack **a, t_stack **b);
+void	ft_sort_five(t_stack **a, t_stack **b);
 // push_swap.c
 
 #endif

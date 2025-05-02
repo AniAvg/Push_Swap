@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:52:27 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/29 12:20:32 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/02 11:36:04 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ void	chunck_sort(t_stack **a, t_stack **b)
 {
 	int	n;
 	int	counter;
-	//int	max_index;
 	counter = 0;
 	n = ft_sqrt(ft_stacksize(*a)) * 3 / 2;
-	//max_index = get_max_index(a);
 	while (*a)
 	{
 		if ((*a)->index <= counter)

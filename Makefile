@@ -8,7 +8,7 @@ SRCS = ./sources/validation.c ./sources/stack_ops.c ./sources/rotate_revrotate_o
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g#3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 
 LIBFT = ./libft/libft.a
 

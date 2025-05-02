@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:51 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/29 12:11:26 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:24:42 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc <= 2)
 		return (0);
 	fill_stack(&a, argv);
-	butterfly_sort(&a, &b);
+	sorting(&a, &b);
 	ft_stackclear(&a);
 	ft_stackclear(&b);
 	return (0);

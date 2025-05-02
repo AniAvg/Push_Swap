@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/29 15:32:06 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:59:12 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*join_args(char **argv)
 		return (NULL);
 	while (argv[i])
 	{
-		if (argv[i][0] == '\0') // if it's an empty string
+		if (argv[i][0] == '\0')
 			ft_error();
 		tmp = ft_strjoin(args_string, argv[i]);
 		free(args_string);
@@ -113,13 +113,8 @@ int	*validate_args(char **argv, int *size)
 		free(split_args[i]);
 		i++;
 	}
-	//num_array[i] = '\0'; // karoxa es el hanem
-	//free(args_string);  //es free-n erevi petq a hanel 
+	free(split_args);
 	*size = count;
 	is_duplicate(num_array, count);
-	// for (int j = 0; j < count; j++)
-	// {
-	// 	ft_printf("%d\n", num_array[j]);
-	// }
 	return (num_array);
 }

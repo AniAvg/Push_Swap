@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 16:52:20 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/29 15:17:25 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/02 18:55:46 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	push_back_to_a(t_stack **a, t_stack **b)
 	}
 }
 
-void	butterfly_sort(t_stack **a, t_stack **b)
+void	sorting(t_stack **a, t_stack **b)
 {
 	int	size;
 	
@@ -67,19 +67,10 @@ void	butterfly_sort(t_stack **a, t_stack **b)
 		ft_swap(a, 'a');
 	else if (size == 3)
 		ft_sort_three(a);
-	// else if (size == 4)
-	// 	ft_sort_four(a);
-	// else if (size = 5)
-	// 	ft_sort_five(a);
+	else if (size == 4)
+		ft_sort_four(a, b);
+	else if (size == 5)
+		ft_sort_five(a, b);
 	else
-	{
-		chunck_sort(a, b); //size)
-		while ((*a)->next)
-		{
-			printf("%d\n", (*a)->index);
-			*a = (*a)->next;
-		}
-	}
-	//push_back_to_a(a, b);
-	
+		chunck_sort(a, b);
 }
