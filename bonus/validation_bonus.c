@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   validation_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 12:44:20 by anavagya         ###   ########.fr       */
+/*   Created: 2025/05/03 13:08:21 by anavagya          #+#    #+#             */
+/*   Updated: 2025/05/03 13:09:32 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 int	*validate_args(char **argv, int *size)
 {

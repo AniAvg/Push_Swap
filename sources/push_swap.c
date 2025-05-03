@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:32:51 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/02 12:24:42 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/03 12:42:09 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc <= 2)
+	if (argc <= 1)
 		return (0);
 	fill_stack(&a, argv);
 	sorting(&a, &b);
