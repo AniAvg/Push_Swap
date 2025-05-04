@@ -35,7 +35,7 @@ char	*ft_read_file(int fd, char *buff)
 	temp = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!temp)
 		return (NULL);
-	while (byte_read != 0 && !(ft_strchr(buff, '\n')))
+	while (byte_read != 0 && !(ft_gnl_strchr(buff, '\n')))
 	{
 		byte_read = read(fd, temp, BUFFER_SIZE);
 		if (byte_read == -1)
@@ -44,7 +44,7 @@ char	*ft_read_file(int fd, char *buff)
 			return (NULL);
 		}
 		temp[byte_read] = '\0';
-		buff = ft_strjoin(buff, temp);
+		buff = ft_gnl_strjoin(buff, temp);
 	}
 	ft_free_str(temp, NULL);
 	return (buff);
@@ -61,9 +61,9 @@ char	*ft_get_the_line(char *buff)
 	while (buff[i] && buff[i] != '\n')
 		i++;
 	if (buff[i] == '\n')
-		line = ft_substr(buff, 0, i + 1);
+		line = ft_gnl_substr(buff, 0, i + 1);
 	else
-		line = ft_substr(buff, 0, i);
+		line = ft_gnl_substr(buff, 0, i);
 	return (line);
 }
 
@@ -83,7 +83,7 @@ char	*ft_new_line(char *buff)
 		buff = NULL;
 		return (NULL);
 	}
-	line = ft_substr(buff, i + 1, ft_strlen(buff) - i);
+	line = ft_gnl_substr(buff, i + 1, ft_strlen(buff) - i);
 	free(buff);
 	buff = NULL;
 	return (line);

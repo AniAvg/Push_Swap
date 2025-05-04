@@ -52,26 +52,29 @@ static int	execute_instruction(char *line, t_stack **a, t_stack **b)
 	return (0);
 }
 
-static int	read_instruction(t_stack **a, t_stack **b)
+static int read_instruction(t_stack **a, t_stack **b)
 {
-	char	*line;
+    char *line;
 
-	while (1)
-	{
-		line = get_next_line(0);
-		if (!line)
+	*b = NULL;
+    while (1)
+    {
+        line = get_next_line(0);
+        if (!line)
 		{
+			if (!(*b))
+				return (1);
 			ft_printf("KO\n");
 			return (0);
 		}
-		if (!execute_instruction(line, a, b))
-		{
+        if (!execute_instruction(line, a, b))
+        {
 			write(2, "Error\n", 6);
-			free(line);
-			return (0);
-		}
-		free(line);
-	}
+            free(line);
+            return (0);
+        }
+        free(line);
+    }
 }
 
 int	main(int argc, char **argv)
@@ -84,17 +87,17 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	fill_stack(&a, argv);
-	sorting(&a, &b);
 	if (!read_instruction(&a, &b))
 	{
 		ft_stackclear(&a);
 		ft_stackclear(&b);
 		return (1);
 	}
-	if (is_stack_sorted(a) && ft_stacksize(b) == 0)
+	if (is_stack_sorted(a) && b == NULL)
 		ft_printf("OK\n");
-	if (!is_stack_sorted(a))
+	else
 		ft_printf("KO\n");
-	ft_printf("OK\n");
+	ft_stackclear(&a);
+	ft_stackclear(&b);
 	return (0);
 }
