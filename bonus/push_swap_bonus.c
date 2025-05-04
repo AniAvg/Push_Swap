@@ -12,39 +12,89 @@
 
 #include "push_swap_bonus.h"
 
-static int	execute_instruction(char *line, t_stack *a, t_stack *b)
+int	is_stack_sorted(t_stack *stack)
 {
-	if (ft_strcmp(line, "sa\n") == 0)
+	if (!stack)
+		return (0);
+	while (stack->next)
+	{
+		if (stack->index > stack->next->index)
+			return (0);
+		stack = stack->next;	
+	}
+	return (1);
+}
+
+static int	execute_instruction(char *line, t_stack **a, t_stack **b)
+{
+	if (ft_strncmp(line, "sa\n", 3) == 0)
 		return (ft_swap(a, 'a'), 1);
-	else if ((ft_strcmp(line, "sb\n") == 0))
+	else if ((ft_strncmp(line, "sb\n", 3) == 0))
 		return (ft_swap(b, 'b'), 1);
-	else if ((ft_strcmp(line, "ss\n") == 0))
+	else if ((ft_strncmp(line, "ss\n", 3) == 0))
 		return (ft_swap_ab(a, b), 1);
-	else if ((ft_strcmp(line, "pa\n") == 0))
+	else if ((ft_strncmp(line, "pa\n", 3) == 0))
 		return (ft_push(a, b, 'a'), 1);
-	else if ((ft_strcmp(line, "pb\n") == 0))
+	else if ((ft_strncmp(line, "pb\n", 3) == 0))
 		return (ft_push(a, b, 'b'), 1);
-	else if ((ft_strcmp(line, "ra\n") == 0))
+	else if ((ft_strncmp(line, "ra\n", 3) == 0))
 		return (ft_rotate(a, 'a'), 1);
-	else if ((ft_strcmp(line, "rb\n") == 0))
+	else if ((ft_strncmp(line, "rb\n", 3) == 0))
 		return (ft_rotate(b, 'b'), 1);
-	else if ((ft_strcmp(line, "rr\n") == 0))
+	else if ((ft_strncmp(line, "rr\n", 3) == 0))
 		return (ft_rotate_ab(a, b), 1);
-	else if ((ft_strcmp(line, "rra\n") == 0))
+	else if ((ft_strncmp(line, "rra\n", 4) == 0))
 		return (ft_rev_rotate(a, 'a'), 1);
-	else if ((ft_strcmp(line, "rrb\n") == 0))
+	else if ((ft_strncmp(line, "rrb\n", 4) == 0))
 		return (ft_rev_rotate(b, 'b'), 1);
-	else if ((ft_strcmp(line, "rrr\n") == 0))
+	else if ((ft_strncmp(line, "rrr\n", 4) == 0))
 		return (ft_rev_rotate_ab(a, b), 1);
 	return (0);
 }
+
+static int	read_instruction(t_stack **a, t_stack **b)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(0);
+		if (!line)
+		{
+			ft_printf("KO\n");
+			return (0);
+		}
+		if (!execute_instruction(line, a, b))
+		{
+			write(2, "Error\n", 6);
+			free(line);
+			return (0);
+		}
+		free(line);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	*line;
 
+	a = NULL;
+	b = NULL;
 	if (argc <= 1)
 		return (0);
+	fill_stack(&a, argv);
+	sorting(&a, &b);
+	if (!read_instruction(&a, &b))
+	{
+		ft_stackclear(&a);
+		ft_stackclear(&b);
+		return (1);
+	}
+	if (is_stack_sorted(a) && ft_stacksize(b) == 0)
+		ft_printf("OK\n");
+	if (!is_stack_sorted(a))
+		ft_printf("KO\n");
+	ft_printf("OK\n");
 	return (0);
 }

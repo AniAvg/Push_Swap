@@ -69,5 +69,6 @@ void	ft_sort_three(t_stack **a);
 void	ft_sort_four(t_stack **a, t_stack **b);
 void	ft_sort_five(t_stack **a, t_stack **b);
 // push_swap_bonus.c
+int		is_stack_sorted(t_stack *stack);
 
 #endif
