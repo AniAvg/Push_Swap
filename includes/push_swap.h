@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 11:16:08 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:40:40 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:06:54 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 int		ft_myatoi(const char *str);
 int		ft_is_only_space(const char *str);
 char	*join_args(char **argv);
-void	is_duplicate(int *num_array, int size);
+int		is_duplicate(int *num_array, int size);
 // validation.c
 int		*validate_args(char **argv, int *size);
 // stack_ops.c
@@ -45,6 +45,7 @@ int		*dup_array(int *arr, int size);
 int		is_sorted(int *arr, int size);
 int		*sort_array(int *arr, int n);
 // fill_stack.c
+void	free_with_error(void *arr);
 void	fill_stack(t_stack **a, char **argv);
 // push_swap_ops.c
 void	ft_swap(t_stack **stack, char c);

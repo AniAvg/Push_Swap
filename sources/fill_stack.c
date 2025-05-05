@@ -6,13 +6,13 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:31:30 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 11:43:22 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:19:31 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	free_with_error(int *arr)
+void	free_with_error(void *arr)
 {
 	free(arr);
 	ft_error();
@@ -35,7 +35,7 @@ void	fill_stack(t_stack **a, char **argv)
 	if (!is_sorted(sorted, arr_size))
 		sort_array(sorted, arr_size);
 	else
-		return ;
+		return (free(sorted), free(unsorted));
 	i = 0;
 	while (i < arr_size)
 	{

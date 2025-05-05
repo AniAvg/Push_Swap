@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:09:09 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:09:43 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/05 14:09:09 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ char	*join_args(char **argv)
 	while (argv[i])
 	{
 		if (argv[i][0] == '\0' || ft_is_only_space(argv[i]))
+		{
+			free(args_string);
 			ft_error();
+		}
 		tmp = ft_strjoin(args_string, argv[i]);
 		free(args_string);
 		args_string = tmp;

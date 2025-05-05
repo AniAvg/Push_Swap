@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 12:43:42 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 12:45:20 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:25:30 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ char	*join_args(char **argv)
 	i = 1;
 	args_string = ft_strdup("");
 	if (!args_string)
-		return (NULL);
+		return (free(args_string), NULL);
 	while (argv[i])
 	{
 		if (argv[i][0] == '\0' || ft_is_only_space(argv[i]))
-			ft_error();
+			free_with_error(args_string);
 		tmp = ft_strjoin(args_string, argv[i]);
 		free(args_string);
 		args_string = tmp;
@@ -84,11 +84,11 @@ char	*join_args(char **argv)
 		i++;
 	}
 	if (ft_is_only_space(args_string) || args_string[0] == '\0')
-		ft_error();
+		free_with_error(args_string);
 	return (args_string);
 }
 
-void	is_duplicate(int *num_array, int arr_size)
+int	is_duplicate(int *num_array, int arr_size)
 {
 	int	i;
 	int	j;
@@ -100,9 +100,12 @@ void	is_duplicate(int *num_array, int arr_size)
 		while (i + j < arr_size)
 		{
 			if (num_array[i] == num_array[i + j])
-				ft_error();
+			{
+				return (0);
+			}
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }

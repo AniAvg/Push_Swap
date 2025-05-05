@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:26:12 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:26:22 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/05 13:15:41 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fill_stack(t_stack **a, char **argv)
 	if (!is_sorted(sorted, arr_size))
 		sort_array(sorted, arr_size);
 	else
-		return ;
+		return (free(unsorted), free(sorted));
 	i = 0;
 	while (i < arr_size)
 	{

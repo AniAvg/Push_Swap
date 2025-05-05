@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 12:53:52 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:46:45 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/05 17:48:29 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	fill_stack(&a, argv);
+	ft_stackclear(&a);
 	if (!read_instruction(&a, &b))
 	{
 		ft_stackclear(&a);
