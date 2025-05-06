@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 11:28:48 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 11:29:03 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:19:27 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,21 @@ void	ft_sort_four(t_stack **a, t_stack **b)
 
 	max_index = get_max_index(*a);
 	pos = get_position(*a, max_index);
-	while (pos != 0)
+	if (pos < 2)
 	{
-		ft_rotate(a, 'a');
-		pos = get_position(*a, max_index);
+		while (pos != 0)
+		{
+			ft_rotate(a, 'a');
+			pos = get_position(*a, max_index);
+		}
+	}
+	else
+	{
+		while (pos != 0)
+		{
+			ft_rev_rotate(a, 'a');
+			pos = get_position(*a, max_index);
+		}
 	}
 	ft_push(a, b, 'b');
 	ft_sort_three(a);
@@ -50,10 +61,21 @@ void	ft_sort_five(t_stack **a, t_stack **b)
 
 	max_index = get_max_index(*a);
 	pos = get_position(*a, max_index);
-	while (pos != 0)
+	if (pos <= 2)
 	{
-		ft_rotate(a, 'a');
-		pos = get_position(*a, max_index);
+		while (pos != 0)
+		{
+			ft_rotate(a, 'a');
+			pos = get_position(*a, max_index);
+		}
+	}
+	else
+	{
+		while (pos != 0)
+		{
+			ft_rev_rotate(a, 'a');
+			pos = get_position(*a, max_index);
+		}
 	}
 	ft_push(a, b, 'b');
 	ft_sort_four(a, b);

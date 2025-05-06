@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 11:16:08 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/05 17:06:54 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:59:53 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_myatoi(const char *str);
 int		ft_is_only_space(const char *str);
 char	*join_args(char **argv);
 int		is_duplicate(int *num_array, int size);
+int		is_int_limit(int *num_array);
 // validation.c
 int		*validate_args(char **argv, int *size);
 // stack_ops.c
@@ -45,7 +46,8 @@ int		*dup_array(int *arr, int size);
 int		is_sorted(int *arr, int size);
 int		*sort_array(int *arr, int n);
 // fill_stack.c
-void	free_with_error(void *arr);
+void	ft_free(char **str);
+void	free_with_error(char **str, void *arr);
 void	fill_stack(t_stack **a, char **argv);
 // push_swap_ops.c
 void	ft_swap(t_stack **stack, char c);
