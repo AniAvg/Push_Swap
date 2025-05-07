@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 12:46:40 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:40:54 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:33:47 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 // validation_utils_bonus.c
-int		ft_myatoi(const char *str);
 int		ft_is_only_space(const char *str);
 char	*join_args(char **argv);
-void	is_duplicate(int *num_array, int size);
+int		is_duplicate(int *num_array, int arr_size);
 // validation_bonus.c
+int		is_int_limit(char *num, int sign);
+int		is_valid_number(char *num);
+int		is_valid_arg(char **spilted);
 int		*validate_args(char **argv, int *size);
 // stack_ops_bonus.c
 void	ft_stackadd(t_stack **stack, t_stack *new);
@@ -40,11 +42,13 @@ int		ft_stacksize(t_stack *stack);
 void	ft_stackclear(t_stack **stack);
 // utils_bonus.c
 void	ft_error(void);
+void	ft_free(char **str);
+void	free_with_error(char **str, void *arr);
+// fill_stack_bonus.c
 int		get_the_index(int *arr, int size, int value);
 int		*dup_array(int *arr, int size);
 int		is_sorted(int *arr, int size);
 int		*sort_array(int *arr, int n);
-// fill_stack_bonus.c
 void	fill_stack(t_stack **a, char **argv);
 // push_swap_ops.c
 void	ft_swap(t_stack **stack, char c);

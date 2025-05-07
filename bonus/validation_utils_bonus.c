@@ -6,47 +6,11 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:09:09 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/05 14:09:09 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:13:51 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-static void	ft_while(const char **str, long *result, int sign)
-{
-	while (ft_isdigit(**str))
-	{
-		*result = *result * 10 + (**str - '0');
-		if (*result * sign > INT_MAX || *result * sign < INT_MIN)
-			ft_error();
-		(*str)++;
-	}
-}
-
-int	ft_myatoi(const char *str)
-{
-	long	result;
-	int		sign;
-
-	if (!str || str[0] == '\0')
-		ft_error();
-	sign = 1;
-	result = 0;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	if (!ft_isdigit(*str))
-		ft_error();
-	if (*str == '0' && *(str + 1))
-		str++;
-	ft_while(&str, &result, sign);
-	if (*str != '\0')
-		ft_error();
-	return (sign * result);
-}
 
 int	ft_is_only_space(const char *str)
 {
@@ -70,14 +34,11 @@ char	*join_args(char **argv)
 	i = 1;
 	args_string = ft_strdup("");
 	if (!args_string)
-		return (NULL);
+		return (free(args_string), NULL);
 	while (argv[i])
 	{
 		if (argv[i][0] == '\0' || ft_is_only_space(argv[i]))
-		{
-			free(args_string);
-			ft_error();
-		}
+			free_with_error(NULL, args_string);
 		tmp = ft_strjoin(args_string, argv[i]);
 		free(args_string);
 		args_string = tmp;
@@ -87,11 +48,11 @@ char	*join_args(char **argv)
 		i++;
 	}
 	if (ft_is_only_space(args_string) || args_string[0] == '\0')
-		ft_error();
+		free_with_error(NULL, args_string);
 	return (args_string);
 }
 
-void	is_duplicate(int *num_array, int arr_size)
+int	is_duplicate(int *num_array, int arr_size)
 {
 	int	i;
 	int	j;
@@ -103,9 +64,12 @@ void	is_duplicate(int *num_array, int arr_size)
 		while (i + j < arr_size)
 		{
 			if (num_array[i] == num_array[i + j])
-				ft_error();
+			{
+				return (0);
+			}
 			j++;
 		}
 		i++;
 	}
+	return (1);
 }

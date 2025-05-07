@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 12:53:52 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/05 17:48:29 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:41:07 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_stack_sorted(t_stack *stack)
 	{
 		if (stack->index > stack->next->index)
 			return (0);
-		stack = stack->next;	
+		stack = stack->next;
 	}
 	return (1);
 }
@@ -52,29 +52,29 @@ static int	execute_instruction(char *line, t_stack **a, t_stack **b)
 	return (0);
 }
 
-static int read_instruction(t_stack **a, t_stack **b)
+static int	read_instruction(t_stack **a, t_stack **b)
 {
-    char *line;
+	char	*line;
 
 	*b = NULL;
-    while (1)
-    {
-        line = get_next_line(0);
-        if (!line)
+	while (1)
+	{
+		line = get_next_line(0);
+		if (!line)
 		{
 			if (!(*b))
 				return (1);
 			ft_printf("KO\n");
 			return (0);
 		}
-        if (!execute_instruction(line, a, b))
-        {
+		if (!execute_instruction(line, a, b))
+		{
 			write(2, "Error\n", 6);
-            free(line);
-            return (0);
-        }
-        free(line);
-    }
+			free(line);
+			return (0);
+		}
+		free(line);
+	}
 }
 
 int	main(int argc, char **argv)

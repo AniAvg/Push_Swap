@@ -1,5 +1,5 @@
 NAME = push_swap
-BONUS = checker
+BONUS_NAME = checker
 
 SRCS = ./sources/validation.c ./sources/validation_utils.c ./sources/stack_ops.c \
 		./sources/rotate_revrotate_ops.c ./sources/push_swap_ops.c ./sources/utils.c \
@@ -15,7 +15,7 @@ OBJS = $(SRCS:.c=.o)
 OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = ./libft/libft.a
 
@@ -24,10 +24,8 @@ all : $(NAME)
 $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -I ./includes -I ./libft  $(OBJS) -L ./libft -lft -o $(NAME)
 
-bonus :$(BONUS)
-
-$(BONUS):  $(OBJS_BONUS) $(LIBFT)
-	$(CC) $(CFLAGS) -I ./includes -I ./libft  $(OBJS_BONUS) -L ./libft -lft -o $(BONUS)
+bonus: $(OBJS_BONUS) $(LIBFT)
+	$(CC) $(CFLAGS) -I ./includes -I ./libft  $(OBJS_BONUS) -L ./libft -lft -o $(BONUS_NAME)
 
 $(LIBFT) :
 	make -C ./libft all
@@ -43,8 +41,8 @@ clean :
 fclean : clean
 	make -C ./libft fclean
 	rm -f $(NAME)
-	rm -f $(BONUS)
+	rm -f $(BONUS_NAME)
 
-re : fclean all bonus
+re : fclean all
 
 .PHONY : all bonus clean fclean re

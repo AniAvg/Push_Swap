@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anavagya <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/28 12:55:45 by anavagya          #+#    #+#              #
-#    Updated: 2025/02/01 18:32:18 by anavagya         ###   ########.fr        #
+#    Updated: 2025/05/07 18:50:26 by anavagya         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@ CFLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	ar -rc $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
 bonus :$(BOBJS)
-	ar -rc $(NAME) $(BOBJS)
+	ar -rcs $(NAME) $(BOBJS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@

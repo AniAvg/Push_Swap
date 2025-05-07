@@ -6,26 +6,63 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/06 14:59:38 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:01:14 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	is_int_limit(char *num, int sign)
+{
+	char	*int_min;
+	char	*int_max;
+
+	int_min = "2147483648";
+	int_max = "2147483647";
+	if (sign == 0)
+	{
+		if (ft_strlen(num) > 10)
+			return (0);
+		if (ft_strlen(num) < 10)
+			return (1);
+		return (ft_strncmp(num, int_min, 11) <= 0);
+	}
+	else
+	{
+		if (*num == '+')
+			num++;
+		if (ft_strlen(num) > 10)
+			return (0);
+		if (ft_strlen(num) < 10)
+			return (1);
+		return (ft_strncmp(num, int_max, 10) <= 0);
+	}
+}
+
 int	is_valid_number(char *num)
 {
 	int	i;
+	int	sign;
 
 	i = 0;
-	if (*num == '+' || *num == '-')
+	sign = 1;
+	if (*num == '+')
+	{
+		sign = 1;
 		num++;
+	}
+	if (*num == '-')
+	{
+		sign = 0;
+		num++;
+	}
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]) || ft_strlen(num) > 10)
 			return (0);
 		i++;
 	}
-	return (1);
+	return (is_int_limit(num, sign));
 }
 
 int	is_valid_arg(char **spilted)
@@ -68,8 +105,6 @@ int	*validate_args(char **argv, int *size)
 		num_array[i] = ft_atoi(split_args[i]);
 	*size = count;
 	if (!is_duplicate(num_array, count))
-		free_with_error(split_args, num_array);
-	if (is_int_limit(num_array) == 0)
 		free_with_error(split_args, num_array);
 	ft_free(split_args);
 	return (num_array);
