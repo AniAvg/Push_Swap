@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anavagya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:47:03 by anavagya          #+#    #+#             */
-/*   Updated: 2025/04/17 18:47:08 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:53:44 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	ft_swap(t_stack **stack, char c)
 
 void	ft_swap_ab(t_stack **a, t_stack **b)
 {
-	ft_swap(a, SILENT);
-	ft_swap(b, SILENT);
+	ft_swap(a, 'x');
+	ft_swap(b, 'x');
 	ft_printf("ss\n");
 }
 

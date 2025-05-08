@@ -6,14 +6,12 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 11:16:08 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/07 17:58:33 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:40:51 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# define SILENT 'x'
 
 # include "libft.h"
 # include <unistd.h>

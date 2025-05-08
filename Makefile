@@ -8,8 +8,7 @@ SRCS = ./sources/validation.c ./sources/validation_utils.c ./sources/stack_ops.c
 
 SRCS_BONUS = ./bonus/validation_bonus.c ./bonus/validation_utils_bonus.c ./bonus/stack_ops_bonus.c \
 			./bonus/rotate_revrotate_ops_bonus.c ./bonus/push_swap_ops_bonus.c \
-			./bonus/utils_bonus.c ./bonus/fill_stack_bonus.c ./bonus/sort_bonus.c \
-			./bonus/final_sort_bonus.c ./bonus/simple_sort_bonus.c ./bonus/push_swap_bonus.c
+			./bonus/utils_bonus.c ./bonus/fill_stack_bonus.c ./bonus/push_swap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
@@ -24,7 +23,9 @@ all : $(NAME)
 $(NAME) : $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -I ./includes -I ./libft  $(OBJS) -L ./libft -lft -o $(NAME)
 
-bonus: $(OBJS_BONUS) $(LIBFT)
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(OBJS_BONUS) $(LIBFT)
 	$(CC) $(CFLAGS) -I ./includes -I ./libft  $(OBJS_BONUS) -L ./libft -lft -o $(BONUS_NAME)
 
 $(LIBFT) :

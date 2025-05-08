@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 18:47:19 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:41:13 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:53:25 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_rotate(t_stack **stack, char c)
 
 void	ft_rotate_ab(t_stack **a, t_stack **b)
 {
-	ft_rotate(a, SILENT);
-	ft_rotate(b, SILENT);
+	ft_rotate(a, 'x');
+	ft_rotate(b, 'x');
 	ft_printf("rr\n");
 }
 
@@ -59,7 +59,7 @@ void	ft_rev_rotate(t_stack **stack, char c)
 
 void	ft_rev_rotate_ab(t_stack **a, t_stack **b)
 {
-	ft_rev_rotate(a, SILENT);
-	ft_rev_rotate(b, SILENT);
+	ft_rev_rotate(a, 'x');
+	ft_rev_rotate(b, 'x');
 	ft_printf("rrr\n");
 }

@@ -6,13 +6,13 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:23:41 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/03 13:41:21 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/08 13:47:05 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	ft_rotate(t_stack **stack, char c)
+void	ft_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*last;
@@ -24,20 +24,15 @@ void	ft_rotate(t_stack **stack, char c)
 	tmp->next = NULL;
 	last = ft_stacklast(*stack);
 	last->next = tmp;
-	if (c == 'a')
-		ft_printf("ra\n");
-	if (c == 'b')
-		ft_printf("rb\n");
 }
 
 void	ft_rotate_ab(t_stack **a, t_stack **b)
 {
-	ft_rotate(a, SILENT);
-	ft_rotate(b, SILENT);
-	ft_printf("rr\n");
+	ft_rotate(a);
+	ft_rotate(b);
 }
 
-void	ft_rev_rotate(t_stack **stack, char c)
+void	ft_rev_rotate(t_stack **stack)
 {
 	t_stack	*prev_last;
 	t_stack	*last;
@@ -51,15 +46,10 @@ void	ft_rev_rotate(t_stack **stack, char c)
 	prev_last->next = NULL;
 	last->next = *stack;
 	*stack = last;
-	if (c == 'a')
-		ft_printf("rra\n");
-	if (c == 'b')
-		ft_printf("rrb\n");
 }
 
 void	ft_rev_rotate_ab(t_stack **a, t_stack **b)
 {
-	ft_rev_rotate(a, SILENT);
-	ft_rev_rotate(b, SILENT);
-	ft_printf("rrr\n");
+	ft_rev_rotate(a);
+	ft_rev_rotate(b);
 }

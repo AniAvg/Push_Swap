@@ -6,11 +6,12 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:08:21 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/07 17:32:57 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:22:20 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
+
 
 int	is_int_limit(char *num, int sign)
 {
@@ -56,6 +57,8 @@ int	is_valid_number(char *num)
 		sign = 0;
 		num++;
 	}
+	if (ft_strlen(num) == 0)
+		return (0);
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]) || ft_strlen(num) > 10)

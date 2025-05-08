@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/07 17:01:14 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:10:34 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	is_valid_number(char *num)
 		sign = 0;
 		num++;
 	}
+	if (ft_strlen(num) == 0)
+		return (0);
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]) || ft_strlen(num) > 10)
