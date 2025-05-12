@@ -6,7 +6,7 @@
 /*   By: anavagya <anavagya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 13:51:18 by anavagya          #+#    #+#             */
-/*   Updated: 2025/05/08 16:10:34 by anavagya         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:30:51 by anavagya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_valid_number(char *num)
 		sign = 1;
 		num++;
 	}
-	if (*num == '-')
+	else if (*num == '-')
 	{
 		sign = 0;
 		num++;
